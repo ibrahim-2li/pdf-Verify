@@ -91,7 +91,7 @@ defineOptions({
                 </h3>
 
                 <div v-if="$page.props.pdf_check_result.metadata" class="mt-4 border-t pt-4 border-gray-200">
-                    <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">File Metadata</h4>
+                    <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Check Details</h4>
                     <dl class="space-y-2 text-sm text-gray-700">
                         <div v-if="$page.props.pdf_check_result.metadata.CreationDate" class="grid grid-cols-3 gap-2">
                             <dt class="font-medium">Creation Date:</dt>
@@ -100,6 +100,10 @@ defineOptions({
                         <div v-if="$page.props.pdf_check_result.metadata.ModDate" class="grid grid-cols-3 gap-2">
                             <dt class="font-medium">Modification Date:</dt>
                             <dd class="col-span-2 break-words">{{ $page.props.pdf_check_result.metadata.ModDate }}</dd>
+                        </div>
+                        <div v-if="$page.props.pdf_check_result.metadata.Creator" class="grid grid-cols-3 gap-2">
+                            <dt class="font-medium">Creator:</dt>
+                            <dd class="col-span-2 break-words">{{ $page.props.pdf_check_result.metadata.Creator }}</dd>
                         </div>
                         <div v-if="$page.props.pdf_check_result.metadata.Producer" class="grid grid-cols-3 gap-2">
                             <dt class="font-medium">Producer:</dt>

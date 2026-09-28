@@ -25,6 +25,14 @@ class PdfIntegrityController extends Controller
         // Clean up the temporary file
         \Illuminate\Support\Facades\Storage::delete($path);
 
+        $pdfCheck = \App\Models\PdfCheck::create([
+            'user_id' => auth()->id(),
+            'file_name' => $file->getClientOriginalName(),
+            'is_modified' => $result['modified'],
+            'message' => $result['message'],
+            'metadata' => $result['metadata'] ?? null,
+        ]);
+
         return back()->with('pdf_check_result', [
             'type' => $result['modified'] === true ? 'error' : ($result['modified'] === false ? 'success' : 'info'),
             'message' => $result['message'],
